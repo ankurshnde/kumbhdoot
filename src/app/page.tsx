@@ -211,7 +211,7 @@ function Header({
               checked={language === "mr"}
               onCheckedChange={toggleLanguage}
               aria-label="Toggle Marathi language"
-              className="data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
+              className="cursor-pointer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
             />
             <span className={`text-[10px] font-semibold transition-colors duration-300 ${language === "mr" ? "text-foreground" : "text-muted-foreground/60"}`}>
               मराठी
