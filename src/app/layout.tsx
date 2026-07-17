@@ -21,8 +21,9 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "KumbhDoot — AI Agent for Every Pilgrim | Nashik Kumbh Mela 2027",
-  description: "KumbhDoot provides a personal AI agent for every pilgrim at Nashik Kumbh Mela 2027. Led by Kaustubh Dhavse, Dr. Praveen Gedam, Shekhar Singh, Dr. Ramesh Raskar, and MIT Project NANDA.",
+  metadataBase: new URL("https://www.kumbhdoot.org"),
+  title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering | Nashik Kumbh Mela 2027",
+  description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
   authors: [{ name: "Government of Maharashtra" }],
   icons: {
     icon: [
@@ -33,17 +34,16 @@ export const metadata: Metadata = {
     apple: "/icon.png?v=3",
   },
   openGraph: {
-    title: "KumbhDoot — AI Agent for Every Pilgrim",
-    description: "Empowering 50M+ pilgrims at Nashik Kumbh Mela 2027 with personal AI agents led by Kaustubh Dhavse, Shekhar Singh, Dr. Praveen Gedam, and Dr. Ramesh Raskar.",
+    title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering",
+    description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
     type: "website",
-    images: ["https://lovable.dev/opengraph-image-p98pqg.png"],
+    images: ["/assets/launch_delhi.jfif"],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@Lovable",
-    title: "KumbhDoot — AI Agent for Every Pilgrim",
-    description: "Empowering 50M+ pilgrims at Nashik Kumbh Mela 2027 with personal AI agents led by Kaustubh Dhavse, Shekhar Singh, Dr. Praveen Gedam, and Dr. Ramesh Raskar.",
-    images: ["https://lovable.dev/opengraph-image-p98pqg.png"],
+    title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering",
+    description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
+    images: ["/assets/launch_delhi.jfif"],
   }
 };
 
