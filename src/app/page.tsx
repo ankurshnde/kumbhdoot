@@ -465,7 +465,7 @@ function HeroSection() {
           <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg border-2 border-primary/20 bg-black">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/zrCArI6xmjk?autoplay=1&loop=1&playlist=zrCArI6xmjk&mute=1"
+              src="https://www.youtube.com/embed/zrCArI6xmjk?autoplay=1&loop=1&playlist=zrCArI6xmjk&mute=0"
               title="KumbhDoot Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
