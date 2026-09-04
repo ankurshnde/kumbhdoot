@@ -20,6 +20,7 @@ import {
   Minus, 
   Plus, 
   ArrowDown, 
+  ArrowUp,
   X,
   ExternalLink
 } from "lucide-react";
@@ -51,6 +52,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { BackToTop } from "@/components/BackToTop";
 import { useRouter, usePathname } from "next/navigation";
 
 // Language State Context
@@ -194,17 +196,18 @@ function Header({
     { label: t("Architecture", "रचना"), href: "#architecture" },
     { label: t("Agentic App Features", "एजेंटिक ॲप वैशिष्ट्ये"), href: "#features" },
     { label: t("Services", "सेवा"), href: "#services" },
-    { label: t("Contact", "संपर्क"), href: "#footer" },
   ];
 
+  const joinUrl = language === "en" ? "/en/join" : "/join";
+
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border transition-colors duration-300">
+    <header className="relative bg-background border-b border-border transition-colors duration-300">
       {/* Top Accessibility Bar */}
       <div className="bg-muted border-b border-border py-1 text-muted-foreground transition-colors duration-300">
         <div className="container mx-auto px-4 flex items-center justify-end gap-3 text-xs">
           {/* Language Toggle */}
           <div className="flex items-center gap-1.5 mr-2">
-            <span className={`text-[10px] font-semibold transition-colors duration-300 ${language === "en" ? "text-foreground" : "text-muted-foreground/60"}`}>
+            <span className={`text-[10px] font-semibold transition-colors duration-300 ${language === "en" ? "text-foreground font-bold" : "text-muted-foreground/60"}`}>
               EN
             </span>
             <Switch
@@ -213,7 +216,7 @@ function Header({
               aria-label="Toggle Marathi language"
               className="cursor-pointer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
             />
-            <span className={`text-[10px] font-semibold transition-colors duration-300 ${language === "mr" ? "text-foreground" : "text-muted-foreground/60"}`}>
+            <span className={`text-[10px] font-semibold transition-colors duration-300 ${language === "mr" ? "text-foreground font-bold" : "text-muted-foreground/60"}`}>
               मराठी
             </span>
           </div>
@@ -300,9 +303,11 @@ function Header({
               key={link.href}
               href={link.href}
               onClick={(e) => {
-                e.preventDefault();
-                const id = link.href.replace("#", "");
-                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                if (link.href.startsWith("#")) {
+                  e.preventDefault();
+                  const id = link.href.replace("#", "");
+                  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                }
               }}
               className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
             >
@@ -310,17 +315,21 @@ function Header({
             </a>
           ))}
           <a
-            href="/proposal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-bold border border-primary text-primary hover:bg-primary hover:text-white px-4 py-1.5 rounded-full transition-all duration-300 inline-flex items-center"
+            href={joinUrl}
+            className="text-xs font-bold bg-primary text-white hover:bg-primary/90 px-4 py-1.5 rounded-full transition-all duration-300 inline-flex items-center shadow-xs"
           >
-            {t("View Proposal", "प्रस्ताव पहा")}
+            {t("Join Us", "सहभागी व्हा")}
           </a>
         </nav>
 
         {/* Mobile menu button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <a
+            href={joinUrl}
+            className="text-xs font-bold bg-primary text-white hover:bg-primary/90 px-3 py-1 rounded-full shadow-xs"
+          >
+            {t("Join Us", "सहभागी व्हा")}
+          </a>
           <Button
             variant="ghost"
             size="icon"
@@ -360,10 +369,12 @@ function Header({
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
                     setMobileMenuOpen(false);
-                    const id = link.href.replace("#", "");
-                    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                    if (link.href.startsWith("#")) {
+                      e.preventDefault();
+                      const id = link.href.replace("#", "");
+                      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                    }
                   }}
                   className="text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 px-4 py-2 rounded-xl transition-all duration-200"
                 >
@@ -372,13 +383,11 @@ function Header({
               ))}
               <div className="h-[1px] bg-border my-2" />
               <a
-                href="/proposal"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-bold border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-1"
+                href={joinUrl}
+                className="text-sm font-bold bg-primary text-white hover:bg-primary/90 px-4 py-2.5 rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-1 shadow-sm"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t("View Proposal", "प्रस्ताव पहा")}
+                {t("Join Us", "सहभागी व्हा")}
               </a>
             </nav>
           </div>
@@ -448,9 +457,9 @@ function HeroSection() {
               )}
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <a href="https://kumbhdoot.app" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <a href="https://kumbhlabs.org" target="_blank" rel="noopener noreferrer" className="inline-block">
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-11 px-6 rounded-lg transition-all flex items-center justify-center text-sm shadow-sm">
-                  {t("See It In Action", "प्रत्यक्ष पहा")}
+                  {t("R&D Behind KumbhDoot", "कुंभदूत मागील संशोधन (R&D)")}
                 </Button>
               </a>
               <a href="/proposal" target="_blank" rel="noopener noreferrer" className="inline-block">
@@ -465,7 +474,7 @@ function HeroSection() {
           <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg border-2 border-primary/20 bg-black">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/zrCArI6xmjk?autoplay=1&loop=1&playlist=zrCArI6xmjk&mute=0"
+              src="https://www.youtube.com/embed/zrCArI6xmjk?autoplay=0"
               title="KumbhDoot Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -1214,7 +1223,7 @@ function LaunchSection() {
   const revealRef = useScrollReveal();
 
   return (
-    <section className="py-14 md:py-20 bg-background transition-colors duration-300">
+    <section id="launch-section" className="py-14 md:py-20 bg-background transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
@@ -1258,8 +1267,65 @@ function LaunchSection() {
   );
 }
 
+function JoinUsTeaserSection() {
+  const { language, t } = useLanguage();
+  const revealRef = useScrollReveal();
+  const joinUrl = language === "en" ? "/en/join" : "/join";
+
+  return (
+    <section className="py-12 md:py-16 bg-muted/40 border-t border-border transition-colors duration-300">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div
+          ref={revealRef}
+          className="opacity-0 bg-card border border-border rounded-2xl p-6 sm:p-10 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+        >
+          <div className="space-y-1.5 max-w-xl text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
+              {language === "en" ? (
+                <>
+                  Build AI-First Kumbh<br />With KumbhDoot
+                </>
+              ) : (
+                <>
+                  AI-फर्स्ट कुंभ घडवा<br />कुंभदूतसह
+                </>
+              )}
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {t(
+                "Explore upcoming events, hackathons, and contribute to Nashik Kumbh Mela 2027.",
+                "नाशिक कुंभमेळा २०२७ साठी आगामी कार्यक्रम आणि कुंभदूत उपक्रमात सहभागी व्हा."
+              )}
+            </p>
+          </div>
+
+          <div className="shrink-0 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <a
+              href={joinUrl}
+              className="inline-flex items-center justify-center gap-2 bg-card hover:bg-muted text-foreground border border-border font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-2xs hover:shadow-xs text-center"
+            >
+              <span>{t("Explore Events", "कार्यक्रम पहा")}</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://forms.gle/HWsvSYRXeYdbLTq66"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#ff5f00] hover:bg-[#e05300] text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all shadow-sm hover:shadow-md text-center"
+            >
+              <span>{t("Get Involved", "सहभागी व्हा")}</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <footer id="footer" className="bg-foreground text-background py-12 transition-colors duration-300">
@@ -1295,6 +1361,14 @@ function Footer() {
             <ul className="space-y-2 text-xs text-background/80 font-medium">
               <li>
                 <a
+                  href={language === "en" ? "/en/join" : "/join"}
+                  className="hover:text-primary transition-colors flex items-center gap-1 inline-flex text-primary font-semibold"
+                >
+                  {t("Join Us & Events", "सहभागी व्हा / कार्यक्रम")}
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://www.projectnanda.org"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1305,12 +1379,12 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.kumbhdoot.com"
+                  href="https://kumbhlabs.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors flex items-center gap-1 inline-flex"
                 >
-                  {t("KumbhDoot App", "कुंभदूत ॲप")}
+                  kumbhlabs.org
                 </a>
               </li>
             </ul>
@@ -1391,8 +1465,8 @@ function Footer() {
               {t("Contact", "संपर्क")}
             </p>
             <p className="text-xs leading-relaxed text-background/80">
-              <a href="mailto:contact@kumbhdoot.app" className="hover:text-primary transition-colors">
-                contact@kumbhdoot.app
+              <a href="mailto:contact@kumbhlabs.org" className="hover:text-primary transition-colors">
+                contact@kumbhlabs.org
               </a>
             </p>
           </div>
@@ -1438,6 +1512,14 @@ function Footer() {
               "ProjectNANDA.org सोबत सहकार्याने डिझाइन केलेले"
             )}
           </p>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center gap-1.5 bg-primary/20 hover:bg-primary text-primary hover:text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition-all border border-primary/40 cursor-pointer shadow-sm"
+          >
+            <ArrowUp className="w-3.5 h-3.5" />
+            <span>{t("Back to Top", "वर जा")}</span>
+          </button>
         </div>
       </div>
     </footer>
@@ -1478,8 +1560,10 @@ function HomeContent({
         <ServicesSection />
         <FoundationsSection />
         <ContributorsSection />
+        <JoinUsTeaserSection />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

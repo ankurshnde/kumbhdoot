@@ -1,0 +1,37 @@
+﻿# KumbhDoot (कुंभदूत)
+
+> World's First AI Agent Framework for a Mass Gathering (Nashik Kumbh Mela 2027)
+
+## Overview
+KumbhDoot is an agentic AI framework designed to empower over 50 million pilgrims during the Nashik Simhastha Kumbh Mela in 2027. It provides an "AI Doot for Every Pilgrim" — a voice-first, multilingual personal assistant running on edge devices and smartphones that ensures real-time crowd safety, cultural navigation, health services, transit coordination, and dignity of life without continuous cloud dependence.
+
+## Key Leadership & Organizations
+- **Government of Maharashtra**: Overseeing Nashik Kumbh Mela 2027 Authority
+- **Kaustubh Dhavse**: Chief Advisor to CM, Maharashtra
+- **Dr. Praveen Gedam**: Divisional Commissioner, Nashik
+- **Shekhar Singh**: Commissioner of Kumbh Mela, Nashik
+- **Prof. Ramesh Raskar**: MIT Media Lab / Founder, Project NANDA & Kumbha Labs
+- **Official R&D Labs**: [Kumbha Labs](https://kumbhlabs.org)
+- **Initiative Partner**: [Project NANDA](https://www.projectnanda.org)
+
+## Core Architecture Pillars
+1. **Agentic AI & Swarm Coordination**: Autonomous personal AI agents coordinated with civic and emergency services.
+2. **Edge-First & Offline Resilience**: Local processing on edge devices and mesh-networked kiosks to handle extreme telecom network congestion.
+3. **Multilingual Voice-First Interface**: Real-time voice translation across 15+ Indian languages and global dialects.
+4. **Zero-Knowledge Privacy**: Privacy-preserving location and credential verification without mass surveillance.
+5. **Universal Service Integration**: Unified transit, darshan booking, crowd heatmaps, medical aid, and lost-and-found registry.
+
+## Key Web Resources & Links
+- **Website (Marathi/English)**: https://www.kumbhdoot.org
+- **English Portal**: https://www.kumbhdoot.org/en
+- **Events & Sprints**: https://www.kumbhdoot.org/join
+- **Kumbha Labs**: https://kumbhlabs.org
+- **Project NANDA**: https://www.projectnanda.org
+- **Contact Email**: contact@kumbhlabs.org
+- **Get Involved / Participation**: https://forms.gle/HWsvSYRXeYdbLTq66
+
+## Key Events & Milestones
+- **Kumbhathon Innovation S.P.R.I.N.T. 2026**: 3-day living lab with Prof. Ramesh Raskar in Nashik (Sep 5–7, 2026).
+- **MIT Media Lab Summit**: Global mass gathering AI architecture symposium at Cambridge, MA.
+- **IIT Delhi Strategic Roundtable**: Public-private AI architecture alignment with national experts.
+- **Davos World Economic Forum**: Presentation on scalable digital public infrastructure for 50M+ citizen events.

@@ -22,9 +22,54 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.kumbhdoot.org"),
-  title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering | Nashik Kumbh Mela 2027",
+  title: {
+    default: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering | Nashik Kumbh Mela 2027",
+    template: "%s | KumbhDoot — Nashik Kumbh Mela 2027",
+  },
   description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
-  authors: [{ name: "Government of Maharashtra" }],
+  applicationName: "KumbhDoot",
+  authors: [
+    { name: "Government of Maharashtra" },
+    { name: "Project NANDA", url: "https://www.projectnanda.org" },
+    { name: "Kumbha Labs", url: "https://kumbhlabs.org" },
+  ],
+  keywords: [
+    "KumbhDoot",
+    "Nashik Kumbh Mela 2027",
+    "Kumbh Mela AI",
+    "AI Doot",
+    "Project NANDA",
+    "Kumbha Labs",
+    "AI Agent Mass Gathering",
+    "Kaustubh Dhavse",
+    "Dr. Ramesh Raskar",
+    "Shekhar Singh",
+    "Dr. Praveen Gedam",
+    "Kumbhathon 2026",
+    "कुंभदूत",
+    "नाशिक कुंभमेळा २०२७",
+    "सिंहस्थ कुंभमेळा",
+    "नाशिक",
+  ],
+  alternates: {
+    canonical: "https://www.kumbhdoot.org",
+    languages: {
+      "mr-IN": "https://www.kumbhdoot.org",
+      "en-IN": "https://www.kumbhdoot.org/en",
+      "x-default": "https://www.kumbhdoot.org",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.png?v=3", type: "image/png" },
@@ -36,15 +81,27 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering",
     description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
+    url: "https://www.kumbhdoot.org",
+    siteName: "KumbhDoot",
+    locale: "mr_IN",
+    alternateLocale: ["en_US", "en_IN"],
     type: "website",
-    images: ["/assets/launch_delhi.jfif"],
+    images: [
+      {
+        url: "/assets/launch_delhi.jfif",
+        width: 1200,
+        height: 630,
+        alt: "KumbhDoot Launch - Nashik Kumbh Mela 2027",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KumbhDoot — World's First AI Agent Framework for a Mass Gathering",
     description: "Empowering 50 million pilgrims at Nashik Kumbh Mela 2027 with an AI Doot for Every Pilgrim — a voice-first, multilingual system ensuring safety, dignity, and seamless services.",
     images: ["/assets/launch_delhi.jfif"],
-  }
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
