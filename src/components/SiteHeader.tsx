@@ -46,6 +46,31 @@ export function SiteHeader() {
     }
   };
 
+  const [isVisible, setIsVisible] = React.useState(true);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const lastScrollY = React.useRef(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
+
+      if (currentScrollY < 60 || mobileMenuOpen) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 8) {
+        // Scrolling down -> hide
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current && lastScrollY.current - currentScrollY > 8) {
+        // Scrolling up -> show
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { label: t("About", "माहिती"), hash: "challenge" },
     { label: t("Vision", "दृष्टी"), hash: "vision" },
@@ -55,7 +80,11 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="relative bg-background border-b border-border transition-colors duration-300">
+    <header
+      className={`sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border transition-all duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${isScrolled ? "shadow-md" : ""}`}
+    >
       {/* Top Accessibility Bar */}
       <div className="bg-muted border-b border-border py-1 text-muted-foreground transition-colors duration-300">
         <div className="container mx-auto px-4 flex items-center justify-end gap-3 text-xs">
