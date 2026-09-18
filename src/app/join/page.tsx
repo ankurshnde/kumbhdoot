@@ -212,19 +212,21 @@ function JoinContent() {
               </button>
 
               {/* Primary "Live" Button */}
-              <a
-                href="https://luma.com/umtvs1uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-lg transition-all shadow-sm"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                </span>
-                <span>{t("Live Session", "थेट सत्र (Live)")}</span>
-                <Radio className="w-3.5 h-3.5 ml-0.5" />
-              </a>
+              {EVENTS.some((e) => e.isLive) ? (
+                <a
+                  href={EVENTS.find((e) => e.isLive)?.lumaUrl || "https://luma.com/nanda"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-lg transition-all shadow-sm"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                  </span>
+                  <span>{t("Live Session", "थेट सत्र (Live)")}</span>
+                  <Radio className="w-3.5 h-3.5 ml-0.5" />
+                </a>
+              ) : null}
             </div>
           </div>
         </section>
@@ -233,28 +235,30 @@ function JoinContent() {
         <section className="py-10 md:py-14 bg-background">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* UPCOMING SECTION */}
-            <div className="mb-12">
-              <div className="border-b border-border pb-2.5 mb-6 flex items-center justify-between">
-                <div>
-                  <h2 className="text-lg sm:text-xl font-bold text-foreground tracking-tight">
-                    {t("Upcoming Events", "आगामी कार्यक्रम")}
-                  </h2>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    {t(
-                      "Active innovation sprints and open registration sessions",
-                      "सक्रिय इनोव्हेशन स्प्रिंट्स आणि चालू नोंदणी सत्रे"
-                    )}
-                  </p>
+            {upcomingEvents.length > 0 ? (
+              <div className="mb-12">
+                <div className="border-b border-border pb-2.5 mb-6 flex items-center justify-between">
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-bold text-foreground tracking-tight">
+                      {t("Upcoming Events", "आगामी कार्यक्रम")}
+                    </h2>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {t(
+                        "Active innovation sprints and open registration sessions",
+                        "सक्रिय इनोव्हेशन स्प्रिंट्स आणि चालू नोंदणी सत्रे"
+                      )}
+                    </p>
+                  </div>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-muted text-foreground border border-border">
+                    {upcomingEvents.length} {t("Event", "कार्यक्रम")}
+                  </span>
                 </div>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-muted text-foreground border border-border">
-                  {upcomingEvents.length} {t("Event", "कार्यक्रम")}
-                </span>
-              </div>
 
-              <div>
-                {upcomingEvents.map((event) => renderEventCard(event, true))}
+                <div>
+                  {upcomingEvents.map((event) => renderEventCard(event, true))}
+                </div>
               </div>
-            </div>
+            ) : null}
 
             {/* PAST EVENTS SECTION */}
             <div className="mb-12">

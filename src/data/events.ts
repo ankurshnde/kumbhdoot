@@ -77,16 +77,16 @@ export const EVENTS: EventItem[] = [
       mr: "नाशिक येथे प्रा. रमेश रास्कर (MIT) यांच्या समवेत ३ दिवसीय लिव्हिंग लॅब इनोव्हेशन स्प्रिंट",
     },
     description: {
-      en: "Kumbhathon Innovation S.P.R.I.N.T. 2026 brings together innovators, startups, researchers, designers, and AI technologists to build transformative solutions for challenges emerging at Kumbh scale — spanning mobility, health, public information, payments, and citizen services.",
-      mr: "कुंभथॉन इनोव्हेशन S.P.R.I.N.T. २०२६ हे कुंभमेळ्याच्या प्रचंड प्रमाणावर येणाऱ्या आव्हानांवर — वाहतूक, आरोग्य, माहिती, देयके आणि नागरिक सेवांवर — नाविन्यपूर्ण उपाय विकसित करण्यासाठी तंत्रज्ञान तज्ज्ञ, स्टार्टअप्स आणि संशोधकांना एकत्र आणते.",
+      en: "Kumbhathon Innovation S.P.R.I.N.T. 2026 brought together innovators, startups, researchers, designers, and AI technologists to build transformative solutions for challenges emerging at Kumbh scale — spanning mobility, health, public information, payments, and citizen services.",
+      mr: "कुंभथॉन इनोव्हेशन S.P.R.I.N.T. २०२६ ने कुंभमेळ्याच्या प्रचंड प्रमाणावर येणाऱ्या आव्हानांवर — वाहतूक, आरोग्य, माहिती, देयके आणि नागरिक सेवांवर — नाविन्यपूर्ण उपाय विकसित करण्यासाठी तंत्रज्ञान तज्ज्ञ, स्टार्टअप्स आणि संशोधकांना एकत्र आणले.",
     },
     timelineTag: {
-      en: "Today Friday",
-      mr: "आज शुक्रवार",
+      en: "Sep 5 Friday",
+      mr: "५ सप्टेंबर शुक्रवार",
     },
     timeDisplay: {
-      en: "11:30 PM · Sep 5, 9:00 AM GMT+5:30",
-      mr: "रात्री ११:३० · ५ सप्टेंबर, सकाळी ९:०० GMT+५:३०",
+      en: "Sep 5–7, 2026 · 3-Day Sprint",
+      mr: "५–७ सप्टेंबर २०२६ · ३ दिवसीय स्प्रिंट",
     },
     dateDisplay: {
       en: "September 5–7, 2026",
@@ -99,12 +99,12 @@ export const EVENTS: EventItem[] = [
       mr: "नाशिक, महाराष्ट्र",
       city: "Nashik",
     },
-    image: "",
-    status: "upcoming",
+    image: "/assets/events/nanda-sprint.png",
+    status: "past",
     category: "sprint",
     badge: {
-      en: "Upcoming Sprint",
-      mr: "आगामी स्प्रिंट",
+      en: "Innovation Sprint",
+      mr: "इनोव्हेशन स्प्रिंट",
     },
     hosts: {
       en: "By Ramesh Raskar & Rishabh",
@@ -129,7 +129,6 @@ export const EVENTS: EventItem[] = [
       ],
     },
     featured: true,
-    isLive: true,
   },
   {
     id: "agentic-commerce",
